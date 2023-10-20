@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4adb662e3d14d0db70f78d14858d49c, type: 3}
+  m_Name: AboutScreen
+  m_EditorClassIdentifier: 
+  descriptionText: "Welcome to [App Name]! \n\nVersion [Version Number] \n\nAbout
+    the App: \n[App Name] is a unique application designed to help you easily and
+    enjoyably try on various styles of eyeglasses and other accessories before making
+    a purchase. We created this app to make the process of choosing accessories more
+    convenient and engaging. \n\nAbout [Company Name]: \nWe are a team of professionals
+    working diligently to provide you with a high-quality virtual try-on experience.
+    Our goal is to make online accessory shopping more interactive and closer to
+    the real in-store experience. \n\nContact Us: \nIf you have any questions, suggestions,
+    or feedback, please don't hesitate to reach out to us. Our support team is ready
+    to assist you. \n- Email: [Email Address] \n- Phone: [Phone Number]\n- We are
+    also active on social media: [Links to Social Media]\n\nPrivacy Policy and Terms
+    of Use: \nWe adhere to high standards of user data privacy and security. For
+    detailed information on our privacy policy and terms of use, please visit the
+    respective sections in our app.\n\nThank you for choosing [App Name]. We hope
+    you enjoy the try-on experience and find the perfect accessories for yourself.
+    Your feedback and experience are important to us, and we are always ready to
+    enhance our app to make it better for you. \n\nSincerely, \nThe [Company Name]
+    Team\n"
+  emailAddress: email@company.com
+  phoneNumber: +1-234-567-88-99
+  websiteURL: company.com
