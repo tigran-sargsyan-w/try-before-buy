@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +9,12 @@ public class BottomMenuButton : MonoBehaviour
     #region Fields
 
     public event Action<int> ButtonClickedCallback;
-
+    
+    [SerializeField][ReadOnly] 
     private Button button;
+    [SerializeField][ReadOnly] 
     private int buttonIndex;
+    
     private readonly Vector3 defaultScale = Vector3.one;
     private readonly float enlargeScale = 1.2f;
 
@@ -23,17 +27,17 @@ public class BottomMenuButton : MonoBehaviour
         button = GetComponent<Button>();
         buttonIndex = transform.GetSiblingIndex();
         
-        EditorApplication.hierarchyChanged += UpdateButtonIndex;
+        SubscribeToEditorCallbacks();
     }
 
-    private void Start()
+    public void Setup()
     {
-        SubscribeEvents();
+        SubscribeOnEvents();
     }
 
     private void OnDestroy()
     {
-        UnsubscribeEvents();
+        UnsubscribeFromEvents();
     }
 
     #endregion
@@ -46,21 +50,43 @@ public class BottomMenuButton : MonoBehaviour
         button.transform.localScale = scale;
     }
 
-    private void UpdateButtonIndex()
-    {
-        if (this == null || transform == null) return;
-        buttonIndex = transform.GetSiblingIndex();
-    }
+    
 
-    private void SubscribeEvents()
+    private void SubscribeOnEvents()
     {
         button.onClick.AddListener(() => ButtonClickedCallback?.Invoke(buttonIndex));
     }
 
-    private void UnsubscribeEvents()
+    private void UnsubscribeFromEvents()
     {
         button.onClick.RemoveAllListeners();
+        UnsubscribeFromEditorCallbacks();
+    }
+
+    #endregion
+    
+    #region Editor Methods
+
+    private void SubscribeToEditorCallbacks()
+    {
+#if UNITY_EDITOR
+        EditorApplication.hierarchyChanged += UpdateButtonIndex;
+#endif
+    }
+
+    private void UnsubscribeFromEditorCallbacks()
+    {
+#if UNITY_EDITOR
         EditorApplication.hierarchyChanged -= UpdateButtonIndex;
+#endif
+    }
+
+    private void UpdateButtonIndex()
+    {
+#if UNITY_EDITOR
+        if (this == null || transform == null) return;
+        buttonIndex = transform.GetSiblingIndex();
+#endif
     }
 
     #endregion

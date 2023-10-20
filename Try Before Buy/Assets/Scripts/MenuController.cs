@@ -1,4 +1,5 @@
 using System.Linq;
+using CustomAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +8,10 @@ public class MenuController : MonoBehaviour
 {
     #region Fields
 
-    public BottomMenuButton[] bottomMenuButtons;
-    public ScreenController screenController;
+    [SerializeField] private BottomMenuButton[] bottomMenuButtons;
+    [SerializeField] private ScreenController screenController;
 
+    [SerializeField][ReadOnly] 
     private HorizontalLayoutGroup layoutGroup;
 
     #endregion
@@ -22,7 +24,7 @@ public class MenuController : MonoBehaviour
         SubscribeToEditorCallbacks();
     }
 
-    private void Start()
+    private void Awake()
     {
         SubscribeOnButtonsCallbacks();
         OnButtonClicked(2);
@@ -43,6 +45,7 @@ public class MenuController : MonoBehaviour
     {
         foreach (var menuButton in bottomMenuButtons)
         {
+            menuButton.Setup();
             menuButton.ButtonClickedCallback += OnButtonClicked;
         }
     }

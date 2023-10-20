@@ -6,7 +6,7 @@ public class ScreenController : MonoBehaviour
 {
     #region Fields
 
-    public ScreenBase[] screens;
+    [SerializeField] private ScreenBase[] screens;
 
     #endregion
     
