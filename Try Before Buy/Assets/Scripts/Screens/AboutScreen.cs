@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Screens.ScreenData;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Screens
     {
         #region Fields
 
-        [SerializeField] private ScreenInfoData screenInfoData;
+        [SerializeField] private AboutScreenData screenData;
         [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
         private Dictionary<string, string> replacements;
@@ -30,15 +31,15 @@ namespace Screens
 
         private void InitializeDataAndText()
         {
-            inputText = screenInfoData.descriptionText;
+            inputText = screenData.descriptionText;
             replacements = new Dictionary<string, string>
             {
                 {"Company Name", $"{Application.companyName}"},
                 {"App Name", $"{Application.productName}"},
                 {"Version Number", $"{Application.version}"},
-                {"Email Address", $"{screenInfoData.emailAddress}"},
-                {"Phone Number", $"{screenInfoData.phoneNumber}"},
-                {"Links to Social Media", $"{screenInfoData.websiteURL}"}
+                {"Email Address", $"{screenData.emailAddress}"},
+                {"Phone Number", $"{screenData.phoneNumber}"},
+                {"Links to Social Media", $"{GetCleanedURLWithLink(screenData.websiteURL)}"}
             };
             
             textMeshProUGUI.text = Regex.Replace(inputText, @"\[(.*?)\]", ReplaceMatch);
@@ -47,13 +48,19 @@ namespace Screens
         private string ReplaceMatch(Match match)
         {
             string matchedValue = match.Groups[1].Value;
-            if (replacements.TryGetValue(matchedValue, out string replacementText))
-            {
-                return replacementText;
-            }
-            return "Not Found";
+            var tryGetMatch = replacements.TryGetValue(matchedValue, out string replacementText);
+            return tryGetMatch ? replacementText : "Not Found";
         }
 
+        private string GetCleanedURLWithLink(string originalURL)
+        {
+            string pattern = @"^(https?://(www\.)?)?([^/]+)";
+            Match match = Regex.Match(originalURL, pattern);
+            var cleanedURL = match.Success ? match.Groups[3].Value : originalURL;
+            var result = $"<link={originalURL}><u>{cleanedURL}</u></link>.";
+            return result;
+        }
+        
         #endregion
     }
 }

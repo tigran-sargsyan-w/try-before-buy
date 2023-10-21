@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4adb662e3d14d0db70f78d14858d49c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee01b3e832f41fb939d31a0ee16fed8, type: 3}
   m_Name: AboutScreen
   m_EditorClassIdentifier: 
   descriptionText: "Welcome to [App Name]! \n\nVersion [Version Number] \n\nAbout
@@ -30,6 +30,6 @@ MonoBehaviour:
     Your feedback and experience are important to us, and we are always ready to
     enhance our app to make it better for you. \n\nSincerely, \nThe [Company Name]
     Team\n"
-  emailAddress: email@company.com
+  emailAddress: app@company.com
   phoneNumber: +1-234-567-88-99
-  websiteURL: company.com
+  websiteURL: https://www.google.com/
