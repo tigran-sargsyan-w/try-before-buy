@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9f062db282af8c84698bcb7fa67f6dd9, type: 3}
   url: https://amzn.eu/d/5pJHRt2
-  name: 
+  name: ZENOTTIC TR90
   description: 
-  price: 
+  price: "25,00\u20AC"

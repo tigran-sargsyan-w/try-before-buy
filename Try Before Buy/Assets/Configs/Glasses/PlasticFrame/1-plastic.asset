@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 99ca783ac1ab539418f166da1c396d35, type: 3}
   url: https://amzn.eu/d/6gxn9XK
-  name: 
+  name: RockBros
   description: 
-  price: 
+  price: "21,18\u20AC"

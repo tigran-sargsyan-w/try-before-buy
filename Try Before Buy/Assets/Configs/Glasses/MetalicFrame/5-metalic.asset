@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 871599966a724fc4d9eb5546b361a374, type: 3}
   url: https://amzn.eu/d/cdfrklR
-  name: 
+  name: VVA UV400
   description: 
-  price: 
+  price: "18,99\u20AC"
