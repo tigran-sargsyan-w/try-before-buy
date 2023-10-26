@@ -7,23 +7,44 @@ using UnityEngine.UI;
 
 public class GlassesButton : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private Image glassesSprite;
     
-    private string url;
     private string pattern = @"(\d{1,4}[,\.]\d{2}\s*[€$¥₣£]|[€$¥₣£]\s*\d{1,4}[,\.]\d{2})";
-    
+
+    #endregion
+
+    #region Methods
+
     public void SetProductData(GlassesData glassesData)
     {
-        url = glassesData.url;
-        //nameText.text = glassesData.name;
         glassesSprite.sprite = glassesData.sprite;
-        GetProductPrice(url);
+        SetProductName(glassesData);
+        SetProductPrice(glassesData);
     }
-    
-    [ContextMenu("Get Price")]
-    public void GetProductPrice(string productUrl)
+
+    private void SetProductName(GlassesData glassesData)
+    {
+        nameText.text = string.IsNullOrEmpty(glassesData.name) ? "Undefined" : glassesData.name;
+    }
+
+    private void SetProductPrice(GlassesData glassesData)
+    {
+        if (string.IsNullOrEmpty(glassesData.price))
+        {
+            GetProductPriceFromUrl(glassesData.url);
+            glassesData.price = priceText.text;
+        }
+        else
+        {
+            priceText.text = glassesData.price;
+        }
+    }
+
+    private void GetProductPriceFromUrl(string productUrl)
     {
         HttpClient client = new HttpClient();
         HttpResponseMessage response = client.GetAsync(productUrl).Result;
@@ -34,4 +55,6 @@ public class GlassesButton : MonoBehaviour
 
         priceText.text = match.Success ? match.Groups[1].Value : "Undefined";
     }
+
+    #endregion
 }

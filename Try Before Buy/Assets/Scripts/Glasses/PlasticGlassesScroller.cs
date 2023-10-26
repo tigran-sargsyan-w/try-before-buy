@@ -2,7 +2,7 @@
 
 namespace Glasses
 {
-    public class PlasticGlassesScroller : MonoBehaviour
+    public class PlasticGlassesScroller : GlassesScroller
     {
         public GlassesCollection glassesCollection;
         public GameObject glassesButtonPrefab;
@@ -16,7 +16,6 @@ namespace Glasses
                 var button = glassesButton.GetComponent<GlassesButton>();
                 button.SetProductData(glassesData);
             }
-            Debug.Log("PlasticGlassesScroller done");
         }
     }
 }
