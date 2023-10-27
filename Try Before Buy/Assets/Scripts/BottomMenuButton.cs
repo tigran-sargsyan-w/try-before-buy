@@ -50,8 +50,6 @@ public class BottomMenuButton : MonoBehaviour
         button.transform.localScale = scale;
     }
 
-    
-
     private void SubscribeOnEvents()
     {
         button.onClick.AddListener(() => ButtonClickedCallback?.Invoke(buttonIndex));

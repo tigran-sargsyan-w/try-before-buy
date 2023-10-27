@@ -23,11 +23,15 @@ namespace Screens
 
         #endregion
 
+        #region Properties
+
         public GlassesCollection CartGlassesCollection
         {
             get => cartGlassesCollection; 
             set => cartGlassesCollection = value;
         }
+
+        #endregion
         
         #region Unity Lifecycle
 
