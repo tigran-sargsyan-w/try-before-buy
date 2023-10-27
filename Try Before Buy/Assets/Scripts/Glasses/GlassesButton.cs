@@ -13,6 +13,11 @@ public class GlassesButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private Image glassesSprite;
     
+    [SerializeField] private Button addToCartButton;
+    [SerializeField] private Image addToCartButtonImage;
+    [SerializeField] private Sprite addToCartSprite;
+    [SerializeField] private Sprite removeFromCartSprite;
+    
     private string pattern = @"(\d{1,4}[,\.]\d{2}\s*[€$¥₣£]|[€$¥₣£]\s*\d{1,4}[,\.]\d{2})";
 
     #endregion

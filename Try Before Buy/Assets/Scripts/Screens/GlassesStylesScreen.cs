@@ -10,6 +10,7 @@ namespace Screens
     {
         #region Fields
 
+        [SerializeField] private GlassesCollection cartGlassesCollection;
         [SerializeField] private TextMeshProUGUI glassesTypeHeader;
         [Header("Buttons")]
         [SerializeField] private Button metallicTypeButton;
@@ -21,6 +22,12 @@ namespace Screens
         private Dictionary<GlassesType,GlassesScroller> scrollerDictionary = new Dictionary<GlassesType, GlassesScroller>();
 
         #endregion
+
+        public GlassesCollection CartGlassesCollection
+        {
+            get => cartGlassesCollection; 
+            set => cartGlassesCollection = value;
+        }
         
         #region Unity Lifecycle
 
