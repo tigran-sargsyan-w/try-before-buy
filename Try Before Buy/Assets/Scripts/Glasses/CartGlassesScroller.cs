@@ -6,12 +6,19 @@ namespace Glasses
 {
     public class CartGlassesScroller : GlassesScroller
     {
+        #region Fields
+
         [SerializeField] private GlassesCollection glassesCollection;
         [SerializeField] private GameObject glassesButtonPrefab;
         [SerializeField] private Transform glassesButtonsParent;
 
+        private CartScreen cartScreen;
         private GlassesCollection cartGlassesCollection;
         private List<GameObject> instantiatedButtons = new List<GameObject>();
+
+        #endregion
+
+        #region Methods
 
         public void Setup()
         {
@@ -36,7 +43,13 @@ namespace Glasses
             }
             instantiatedButtons.Clear();
         }
-        
+
+        private void SetCartGlassesCollection()
+        {
+            cartScreen = gameObject.GetComponentInParent<CartScreen>();
+            cartGlassesCollection = cartScreen.CartGlassesCollection;
+        }
+
         private CartButtonState DetermineCartButtonState(GlassesData glassesData)
         {
             return !cartGlassesCollection.glassesData.Contains(glassesData)
@@ -53,9 +66,9 @@ namespace Glasses
             else
             {
                 cartGlassesCollection.glassesData.Remove(glassesData);
-                //destroy button
                 RemoveButtonByGlassesData(glassesData);
             }
+            cartScreen.UpdateCartDisplayBasedOnEmptiness();
         }
 
         private void RemoveButtonByGlassesData(GlassesData glassesData)
@@ -71,10 +84,7 @@ namespace Glasses
                 return isDataIdentical;
             });
         }
-        
-        private void SetCartGlassesCollection()
-        {
-            cartGlassesCollection = gameObject.GetComponentInParent<CartScreen>().CartGlassesCollection;
-        }
+
+        #endregion
     }
 }

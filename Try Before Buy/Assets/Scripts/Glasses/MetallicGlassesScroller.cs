@@ -5,11 +5,17 @@ namespace Glasses
 {
     public class MetallicGlassesScroller : GlassesScroller
     {
+        #region Fields
+
         [SerializeField] private GlassesCollection glassesCollection;
         [SerializeField] private GameObject glassesButtonPrefab;
         [SerializeField] private Transform glassesButtonsParent;
         
         private GlassesCollection cartGlassesCollection;
+
+        #endregion
+
+        #region Unity Lifecycle
 
         private void Start()
         {
@@ -23,6 +29,10 @@ namespace Glasses
                 button.CartButtonClickedCallback += OnGlassesCartButtonClicked;
             }
         }
+
+        #endregion
+
+        #region Methods
 
         private CartButtonState DetermineCartButtonState(GlassesData glassesData)
         {
@@ -47,5 +57,7 @@ namespace Glasses
         {
             cartGlassesCollection = gameObject.GetComponentInParent<GlassesStylesScreen>().CartGlassesCollection;
         }
+
+        #endregion
     }
 }
