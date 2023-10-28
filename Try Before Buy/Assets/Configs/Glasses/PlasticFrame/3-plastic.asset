@@ -17,4 +17,4 @@ MonoBehaviour:
   name: Likoma Mirror
   description: 
   price: "10,90\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: bd8b352987002594fbca41cce966f65b, type: 3}
+  glassesPrefab: {fileID: 5690995552269030140, guid: cdc1a36493af6fd47921b659d9a87a57, type: 3}

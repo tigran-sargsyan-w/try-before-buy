@@ -17,4 +17,4 @@ MonoBehaviour:
   name: BOSS Mixte
   description: 
   price: "83,93\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 8297edaffe3d9c34c9f900b3f874af18, type: 3}
+  glassesPrefab: {fileID: 8289595883876901091, guid: b09fb060334ef144baf9db37c5c4fa33, type: 3}

@@ -17,4 +17,4 @@ MonoBehaviour:
   name: Dollger
   description: 
   price: "17,99\_\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 469bfe310f9b9694ab893cf0306ef3b5, type: 3}
+  glassesPrefab: {fileID: 8833978236803674975, guid: 83ab813be158a4b49aa5a2a0b9ed936e, type: 3}

@@ -17,4 +17,4 @@ MonoBehaviour:
   name: RockBros
   description: 
   price: "21,18\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 196d371c8baf04c4d94214b601bfbcaa, type: 3}
+  glassesPrefab: {fileID: 4287005694994517182, guid: dc9adf4dde79ac6428b4dbf6064d98c3, type: 3}

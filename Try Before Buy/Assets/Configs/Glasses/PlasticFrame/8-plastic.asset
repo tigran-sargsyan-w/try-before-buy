@@ -17,4 +17,4 @@ MonoBehaviour:
   name: FANXIYA Rose
   description: 
   price: "13,99\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 7766a0c06d3124e44a59f58bb3eba818, type: 3}
+  glassesPrefab: {fileID: 3002091277347171334, guid: 2892ac4c4b0c13b4e8a20dcdd5c407f6, type: 3}

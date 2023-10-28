@@ -17,4 +17,4 @@ MonoBehaviour:
   name: Hugo Boss
   description: 
   price: "182,04\_\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 3e9a98bda9b59b64bb64996d6de950f4, type: 3}
+  glassesPrefab: {fileID: 3779896689980025750, guid: 8c9ff7278d3636144a01844bb90d0996, type: 3}

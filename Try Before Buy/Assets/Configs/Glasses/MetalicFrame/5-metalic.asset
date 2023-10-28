@@ -17,4 +17,4 @@ MonoBehaviour:
   name: VVA UV400
   description: 
   price: "18,99\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 071a94df3620b574bb0f2035eef4aa5d, type: 3}
+  glassesPrefab: {fileID: 1972143478983006662, guid: 708741694b9717242961c308782fad8b, type: 3}

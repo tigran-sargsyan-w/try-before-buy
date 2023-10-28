@@ -17,4 +17,4 @@ MonoBehaviour:
   name: Ray Ban
   description: 
   price: "98,00\_\u20AC"
-  glassesPrefab: {fileID: 919132149155446097, guid: 99c270b5636169041b2a0f55c80f1fe9, type: 3}
+  glassesPrefab: {fileID: 4317617135699250532, guid: 453c9ac6c46c61448836d2e82c4ce82d, type: 3}
