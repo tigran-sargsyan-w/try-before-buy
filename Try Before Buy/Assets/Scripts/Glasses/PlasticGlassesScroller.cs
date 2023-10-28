@@ -44,16 +44,11 @@ namespace Glasses
                 : CartButtonState.RemoveFromCart;
         }
 
-        private void SetCartGlassesCollection()
-        {
-            cartGlassesCollection = gameObject.GetComponentInParent<GlassesStylesScreen>().CartGlassesCollection;
-        }
-
         private void OnGlassesTryOnButtonClicked(GlassesData data)
         {
             tryOnScreen.GoToTryOnScreen(data);
         }
-        
+
         private void OnGlassesCartButtonClicked(GlassesData glassesData)
         {
             if (!cartGlassesCollection.glassesData.Contains(glassesData))
@@ -64,6 +59,11 @@ namespace Glasses
             {
                 cartGlassesCollection.glassesData.Remove(glassesData);
             }
+        }
+
+        private void SetCartGlassesCollection()
+        {
+            cartGlassesCollection = gameObject.GetComponentInParent<GlassesStylesScreen>().CartGlassesCollection;
         }
 
         #endregion
