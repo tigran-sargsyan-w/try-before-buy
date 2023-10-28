@@ -707,6 +707,7 @@ MonoBehaviour:
   nameText: {fileID: 3947478136878148213}
   priceText: {fileID: 3947478136743267546}
   glassesSprite: {fileID: 3947478137217398652}
+  tryOnButton: {fileID: 3947478136888640618}
   cartButton: {fileID: 6878657414782621563}
   cartButtonImage: {fileID: 1605375560739123305}
   cartButtonImageBg: {fileID: 189969693524022195}

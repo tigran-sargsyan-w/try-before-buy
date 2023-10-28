@@ -10,13 +10,15 @@ namespace Glasses
     public class GlassesButton : MonoBehaviour
     {
         #region Fields
-        
+        public event Action<GlassesData> TryOnButtonClickedCallback;
         public event Action<GlassesData> CartButtonClickedCallback;
+        
         
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private Image glassesSprite;
     
+        [SerializeField] private Button tryOnButton;
         [SerializeField] private Button cartButton;
         [SerializeField] private Image cartButtonImage;
         [SerializeField] private Image cartButtonImageBg;
@@ -75,12 +77,19 @@ namespace Glasses
 
         private void SubscribeOnEvents(GlassesData glassesData)
         {
+            tryOnButton.onClick.AddListener(() => OnTryOnButtonClicked(glassesData));
             cartButton.onClick.AddListener(() => OnCartButtonClicked(glassesData));
         }
 
         private void UnsubscribeFromEvents()
         {
+            tryOnButton.onClick.RemoveAllListeners();
             cartButton.onClick.RemoveAllListeners();
+        }
+
+        private void OnTryOnButtonClicked(GlassesData glassesData)
+        {
+            TryOnButtonClickedCallback?.Invoke(glassesData);
         }
 
         private void OnCartButtonClicked(GlassesData glassesData)

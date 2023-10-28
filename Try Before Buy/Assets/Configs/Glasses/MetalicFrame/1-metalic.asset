@@ -17,3 +17,4 @@ MonoBehaviour:
   name: SODQW UV400
   description: 
   price: "19,99\_\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: 85c327537b37ba64b9047a0393ab2dac, type: 3}

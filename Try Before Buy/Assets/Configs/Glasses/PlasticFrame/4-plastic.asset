@@ -17,3 +17,4 @@ MonoBehaviour:
   name: ZENOTTIC TR90
   description: 
   price: "25,00\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: b42d66018e16d7740b2a7387601ac518, type: 3}

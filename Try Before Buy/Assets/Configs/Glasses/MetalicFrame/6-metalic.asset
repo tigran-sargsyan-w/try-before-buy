@@ -17,3 +17,4 @@ MonoBehaviour:
   name: Duco CE 3025K
   description: 
   price: "27,00\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: 9de09712c6c832b4290867b241fc041a, type: 3}

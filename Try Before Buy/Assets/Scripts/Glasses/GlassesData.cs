@@ -11,5 +11,6 @@ namespace Glasses
         public string name;
         public string description;
         public string price;
+        public GameObject glassesPrefab;
     }
 }

@@ -17,3 +17,4 @@ MonoBehaviour:
   name: Kachawoo
   description: 
   price: "14,98\_\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: d4b4f7aa23c17a74b8c3c726e14eeaec, type: 3}

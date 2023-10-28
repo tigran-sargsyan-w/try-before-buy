@@ -27,7 +27,7 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         SubscribeOnButtonsCallbacks();
-        OnButtonClicked(2);
+        OnButtonClicked(0);
         RefreshHorizontalLayout();
     }
 
@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    private void OnButtonClicked(int buttonIndex)
+    public void OnButtonClicked(int buttonIndex)
     {
         for (int i = 0; i < bottomMenuButtons.Length; i++)
         {

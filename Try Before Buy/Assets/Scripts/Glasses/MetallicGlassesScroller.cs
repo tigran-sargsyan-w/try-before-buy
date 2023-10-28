@@ -7,6 +7,8 @@ namespace Glasses
     {
         #region Fields
 
+        [SerializeField] private TryOnScreen tryOnScreen;
+        
         [SerializeField] private GlassesCollection glassesCollection;
         [SerializeField] private GameObject glassesButtonPrefab;
         [SerializeField] private Transform glassesButtonsParent;
@@ -22,10 +24,11 @@ namespace Glasses
             SetCartGlassesCollection();
             foreach (var glassesData in glassesCollection.glassesData)
             {
-                var glassesButton = Instantiate(glassesButtonPrefab, glassesButtonsParent, true);
+                var glassesButton = Instantiate(glassesButtonPrefab, glassesButtonsParent);
                 var button = glassesButton.GetComponent<GlassesButton>();
                 button.SetProductData(glassesData);
                 button.InitCartButton(DetermineCartButtonState(glassesData));
+                button.TryOnButtonClickedCallback += OnGlassesTryOnButtonClicked;
                 button.CartButtonClickedCallback += OnGlassesCartButtonClicked;
             }
         }
@@ -39,6 +42,11 @@ namespace Glasses
             return !cartGlassesCollection.glassesData.Contains(glassesData)
                 ? CartButtonState.AddToCart
                 : CartButtonState.RemoveFromCart;
+        }
+        
+        private void OnGlassesTryOnButtonClicked(GlassesData data)
+        {
+            tryOnScreen.GoToTryOnScreen(data);
         }
 
         private void OnGlassesCartButtonClicked(GlassesData glassesData)

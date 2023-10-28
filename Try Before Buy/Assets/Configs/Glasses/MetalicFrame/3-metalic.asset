@@ -17,3 +17,4 @@ MonoBehaviour:
   name: Vintage Lennon
   description: 
   price: "18,96\_\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: 014f0f5fbfbc8f049b211577f44f8e41, type: 3}

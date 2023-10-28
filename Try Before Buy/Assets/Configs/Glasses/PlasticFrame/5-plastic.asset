@@ -17,3 +17,4 @@ MonoBehaviour:
   name: ZENOTTIC
   description: 
   price: "25,99\_\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: 922108636f66cbf419b97a6e22d2370c, type: 3}

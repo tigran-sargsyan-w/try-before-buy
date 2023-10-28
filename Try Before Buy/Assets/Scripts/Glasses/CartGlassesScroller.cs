@@ -26,7 +26,7 @@ namespace Glasses
             foreach (var glassesData in glassesCollection.glassesData)
             {
                 if (glassesData == null) return;
-                var glassesButton = Instantiate(glassesButtonPrefab, glassesButtonsParent, true);
+                var glassesButton = Instantiate(glassesButtonPrefab, glassesButtonsParent);
                 var button = glassesButton.GetComponent<GlassesButton>();
                 button.SetProductData(glassesData);
                 button.InitCartButton(DetermineCartButtonState(glassesData));

@@ -17,3 +17,4 @@ MonoBehaviour:
   name: Ray-Ban Mont
   description: 
   price: "104,45\u20AC"
+  glassesPrefab: {fileID: 919132149155446097, guid: bcd1527ced5bc4a4e9767af2041a8154, type: 3}
