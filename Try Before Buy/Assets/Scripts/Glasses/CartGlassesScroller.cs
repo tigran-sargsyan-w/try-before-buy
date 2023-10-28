@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Glasses
 {
-    public class CartGlassesScroller : GlassesScroller
+    public class CartGlassesScroller : MonoBehaviour
     {
         #region Fields
 
