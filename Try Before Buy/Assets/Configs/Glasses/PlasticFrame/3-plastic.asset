@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 3-plastic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 27ac7f9c2d1c75d499a12cf0c93a9aca, type: 3}
+  glassesType: 1
   url: https://amzn.eu/d/2ERXQDh
   name: Likoma Mirror
   description: 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 4-metalic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a433be068e7649e4bbed541dc486875a, type: 3}
+  glassesType: 0
   url: https://amzn.eu/d/4ByPDwQ
   name: BOSS Mixte
   description: 

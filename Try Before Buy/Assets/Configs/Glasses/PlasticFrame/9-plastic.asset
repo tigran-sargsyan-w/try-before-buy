@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 9-plastic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1049d1b0d70bd574eaa6dfa870d6961a, type: 3}
+  glassesType: 1
   url: https://amzn.eu/d/g1NTXBS
   name: ZYFZYJY
   description: 

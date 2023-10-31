@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 4-plastic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9f062db282af8c84698bcb7fa67f6dd9, type: 3}
+  glassesType: 1
   url: https://amzn.eu/d/5pJHRt2
   name: ZENOTTIC TR90
   description: 

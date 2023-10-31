@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3779896689980025781}
   - component: {fileID: 3779896689980025447}
   - component: {fileID: 3779896689980025417}
+  - component: {fileID: -7926634810664126762}
   m_Layer: 0
   m_Name: 2-plastic
   m_TagString: Untagged
@@ -86,6 +87,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-7926634810664126762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779896689980025750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507750584ab241e09bb753833217dd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frame: {fileID: 3779896689980025750}
+  lens: {fileID: 3779896689980025832}
+  defaultFrameMaterial: {fileID: 2100000, guid: 60643ec063143494f87b684d36c6a8cd, type: 2}
+  defaultLensMaterial: {fileID: 2100000, guid: 8c2778c5344e2e84cb80174fe8b3ea48, type: 2}
 --- !u!1 &3779896689980025832
 GameObject:
   m_ObjectHideFlags: 0

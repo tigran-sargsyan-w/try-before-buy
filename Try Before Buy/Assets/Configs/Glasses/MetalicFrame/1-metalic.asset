@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1-metalic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1870fb1b5b47e984d96807e1efca9f17, type: 3}
+  glassesType: 0
   url: https://amzn.eu/d/4piZTFw
   name: SODQW UV400
   description: 

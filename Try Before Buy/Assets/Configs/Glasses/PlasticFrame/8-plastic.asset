@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 8-plastic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 82fd1a9d6d86e644ea4af35f206a06b5, type: 3}
+  glassesType: 1
   url: https://amzn.eu/d/aJiwgcb
   name: FANXIYA Rose
   description: 

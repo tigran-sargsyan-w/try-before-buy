@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 5-metalic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 871599966a724fc4d9eb5546b361a374, type: 3}
+  glassesType: 0
   url: https://amzn.eu/d/cdfrklR
   name: VVA UV400
   description: 

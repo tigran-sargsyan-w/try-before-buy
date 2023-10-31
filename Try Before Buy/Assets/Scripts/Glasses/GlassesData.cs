@@ -7,6 +7,7 @@ namespace Glasses
     public class GlassesData : ScriptableObject
     {
         [SpritePreview] public Sprite sprite;
+        public GlassesType glassesType;
         public string url;
         public string name;
         public string description;

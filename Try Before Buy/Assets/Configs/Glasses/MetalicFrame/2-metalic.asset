@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 2-metalic
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 06718bc5047703449ac8d1e0d8f79abc, type: 3}
+  glassesType: 0
   url: https://amzn.eu/d/1ri7I1H
   name: Dollger
   description: 
