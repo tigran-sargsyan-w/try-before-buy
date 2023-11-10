@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
-using Glasses;
+using Enums;
+using Glasses.Common;
+using Glasses.Scrollers;
+using Screens.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,30 +40,18 @@ namespace Screens
 
         private void Start()
         {
-            SubscribeOnButtonsCallbacks();
+            SubscribeButtonsCallbacks();
             InitializeScrollerDictionary();
         }
 
         private void OnDestroy()
         {
-            UnsubscribeFromButtonsCallbacks();
+            UnsubscribeButtonsCallbacks();
         }
 
         #endregion
 
         #region Methods
-
-        private void SubscribeOnButtonsCallbacks()
-        {
-            metallicTypeButton.onClick.AddListener(OnMetallicTypeButtonClicked);
-            plasticTypeButton.onClick.AddListener(OnPlasticTypeButtonClicked);
-        }
-
-        private void UnsubscribeFromButtonsCallbacks()
-        {
-            metallicTypeButton.onClick.RemoveAllListeners();
-            plasticTypeButton.onClick.RemoveAllListeners();
-        }
         
         private void InitializeScrollerDictionary()
         {
@@ -90,6 +81,22 @@ namespace Screens
                 else
                     scroller.Value.Hide();
             }
+        }
+
+        #endregion
+
+        #region Event Registry
+
+        private void SubscribeButtonsCallbacks()
+        {
+            metallicTypeButton.onClick.AddListener(OnMetallicTypeButtonClicked);
+            plasticTypeButton.onClick.AddListener(OnPlasticTypeButtonClicked);
+        }
+
+        private void UnsubscribeButtonsCallbacks()
+        {
+            metallicTypeButton.onClick.RemoveAllListeners();
+            plasticTypeButton.onClick.RemoveAllListeners();
         }
 
         #endregion

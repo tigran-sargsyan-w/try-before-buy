@@ -1,7 +1,10 @@
-﻿using Screens;
+﻿using Enums;
+using Glasses.Common;
+using Glasses.Data;
+using Screens;
 using UnityEngine;
 
-namespace Glasses
+namespace Glasses.Scrollers
 {
     public class GlassesScroller : MonoBehaviour
     {

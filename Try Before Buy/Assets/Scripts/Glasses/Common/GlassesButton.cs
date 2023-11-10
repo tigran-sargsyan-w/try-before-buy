@@ -1,19 +1,25 @@
 using System;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using Enums;
+using Glasses.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Glasses
+namespace Glasses.Common
 {
     public class GlassesButton : MonoBehaviour
     {
-        #region Fields
+        #region Events
+
         public event Action<GlassesData> TryOnButtonClickedCallback;
         public event Action<GlassesData> CartButtonClickedCallback;
+
+        #endregion
         
-        
+        #region Fields
+
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private Image glassesSprite;
@@ -26,9 +32,9 @@ namespace Glasses
         [SerializeField] private Sprite removeFromCartSprite;
         
         private GlassesData glassesData;
-        private string pattern = @"(\d{1,4}[,\.]\d{2}\s*[€$¥₣£]|[€$¥₣£]\s*\d{1,4}[,\.]\d{2})";
-        private Color red = new Color(173/255f,63/255f,63/255f);
-        private Color green = new Color(63/255f,115/255f,63/255f);
+        private readonly string pattern = @"(\d{1,4}[,\.]\d{2}\s*[€$¥₣£]|[€$¥₣£]\s*\d{1,4}[,\.]\d{2})";
+        private readonly Color red = new Color(173/255f,63/255f,63/255f);
+        private readonly Color green = new Color(63/255f,115/255f,63/255f);
         private CartButtonState cartButtonState;
 
         #endregion
@@ -44,13 +50,13 @@ namespace Glasses
 
         #region Methods
 
-        public void SetProductData(GlassesData glassesData)
+        public void SetProductData(GlassesData data)
         {
-            this.glassesData = glassesData;
-            glassesSprite.sprite = glassesData.sprite;
-            SetProductName(glassesData);
-            SetProductPrice(glassesData);
-            SubscribeOnEvents(glassesData);
+            glassesData = data;
+            glassesSprite.sprite = data.sprite;
+            SetProductName(data);
+            SetProductPrice(data);
+            SubscribeOnEvents(data);
         }
 
         public GlassesData GetGlassesData()
@@ -74,29 +80,6 @@ namespace Glasses
                     break;
             }
         }
-
-        private void SubscribeOnEvents(GlassesData glassesData)
-        {
-            tryOnButton.onClick.AddListener(() => OnTryOnButtonClicked(glassesData));
-            cartButton.onClick.AddListener(() => OnCartButtonClicked(glassesData));
-        }
-
-        private void UnsubscribeFromEvents()
-        {
-            tryOnButton.onClick.RemoveAllListeners();
-            cartButton.onClick.RemoveAllListeners();
-        }
-
-        private void OnTryOnButtonClicked(GlassesData glassesData)
-        {
-            TryOnButtonClickedCallback?.Invoke(glassesData);
-        }
-
-        private void OnCartButtonClicked(GlassesData glassesData)
-        {
-            ToggleCartButtonState();
-            CartButtonClickedCallback?.Invoke(glassesData);
-        }
         
         private void ToggleCartButtonState()
         {
@@ -105,21 +88,21 @@ namespace Glasses
                 : CartButtonState.AddToCart);
         }
 
-        private void SetProductName(GlassesData glassesData)
+        private void SetProductName(GlassesData data)
         {
-            nameText.text = string.IsNullOrEmpty(glassesData.name) ? "Undefined" : glassesData.name;
+            nameText.text = string.IsNullOrEmpty(data.name) ? "Undefined" : data.name;
         }
 
-        private void SetProductPrice(GlassesData glassesData)
+        private void SetProductPrice(GlassesData data)
         {
-            if (string.IsNullOrEmpty(glassesData.price))
+            if (string.IsNullOrEmpty(data.price))
             {
-                GetProductPriceFromUrl(glassesData.url);
-                glassesData.price = priceText.text;
+                GetProductPriceFromUrl(data.url);
+                data.price = priceText.text;
             }
             else
             {
-                priceText.text = glassesData.price;
+                priceText.text = data.price;
             }
         }
 
@@ -133,6 +116,36 @@ namespace Glasses
             Match match = priceRegex.Match(html);
 
             priceText.text = match.Success ? match.Groups[1].Value : "Undefined";
+        }
+
+        #endregion
+        
+        #region Event Registry
+
+        private void SubscribeOnEvents(GlassesData data)
+        {
+            tryOnButton.onClick.AddListener(() => OnTryOnButtonClicked(data));
+            cartButton.onClick.AddListener(() => OnCartButtonClicked(data));
+        }
+
+        private void UnsubscribeFromEvents()
+        {
+            tryOnButton.onClick.RemoveAllListeners();
+            cartButton.onClick.RemoveAllListeners();
+            
+            TryOnButtonClickedCallback = null;
+            CartButtonClickedCallback = null;
+        }
+
+        private void OnTryOnButtonClicked(GlassesData data)
+        {
+            TryOnButtonClickedCallback?.Invoke(data);
+        }
+
+        private void OnCartButtonClicked(GlassesData data)
+        {
+            ToggleCartButtonState();
+            CartButtonClickedCallback?.Invoke(data);
         }
 
         #endregion

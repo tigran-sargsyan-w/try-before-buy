@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Glasses
+namespace Glasses.Data
 {
     [CreateAssetMenu(fileName = "GlassesColorData", menuName = "GlassesColorData", order = 0)]
     public class GlassesColorData : ScriptableObject

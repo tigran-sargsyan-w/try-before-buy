@@ -1,107 +1,116 @@
 using System.Linq;
-using CustomAttributes;
+using Custom_Attributes;
+using Screens.Common;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+namespace Common
 {
-    #region Fields
-
-    [SerializeField] private BottomMenuButton[] bottomMenuButtons;
-    [SerializeField] private ScreenController screenController;
-
-    [SerializeField][ReadOnly] 
-    private HorizontalLayoutGroup layoutGroup;
-
-    #endregion
-
-    #region Unity Lifecycle
-
-    private void OnValidate()
+    public class MenuController : MonoBehaviour
     {
-        layoutGroup = GetComponent<HorizontalLayoutGroup>();
-        SubscribeToEditorCallbacks();
-    }
+        #region Fields
 
-    private void Awake()
-    {
-        SubscribeOnButtonsCallbacks();
-        OnButtonClicked(0);
-        RefreshHorizontalLayout();
-    }
+        [SerializeField] private BottomMenuButton[] bottomMenuButtons;
+        [SerializeField] private ScreenController screenController;
 
-    private void OnDestroy()
-    {
-        UnsubscribeFromButtonsCallbacks();
-        UnsubscribeFromEditorCallbacks();
-    }
+        [SerializeField][ReadOnly] 
+        private HorizontalLayoutGroup layoutGroup;
 
-    #endregion
+        #endregion
 
-    #region Methods
+        #region Unity Lifecycle
 
-    private void SubscribeOnButtonsCallbacks()
-    {
-        foreach (var menuButton in bottomMenuButtons)
+        private void Awake()
         {
-            menuButton.Setup();
-            menuButton.ButtonClickedCallback += OnButtonClicked;
+            SubscribeButtonsCallbacks();
+            OnMenuButtonClicked(0);
+            RefreshHorizontalLayout();
         }
-    }
 
-    private void UnsubscribeFromButtonsCallbacks()
-    {
-        foreach (var menuButton in bottomMenuButtons)
+        private void OnDestroy()
         {
-            menuButton.ButtonClickedCallback -= OnButtonClicked;
+            UnsubscribeButtonsCallbacks();
+            UnsubscribeEditorCallbacks();
         }
-    }
 
-    public void OnButtonClicked(int buttonIndex)
-    {
-        for (int i = 0; i < bottomMenuButtons.Length; i++)
+        #endregion
+
+        #region Methods
+        
+
+        public void OnMenuButtonClicked(int buttonIndex)
         {
-            bool isToEnlarge = (i == buttonIndex);
-            bottomMenuButtons[i].SetButtonScale(isToEnlarge);
+            for (int i = 0; i < bottomMenuButtons.Length; i++)
+            {
+                bool isToEnlarge = (i == buttonIndex);
+                bottomMenuButtons[i].SetButtonScale(isToEnlarge);
+            }
+            RefreshHorizontalLayout();
+            screenController.ShowScreen(buttonIndex);
         }
-        RefreshHorizontalLayout();
-        screenController.ShowScreen(buttonIndex);
-    }
 
-    private void RefreshHorizontalLayout()
-    {
-        layoutGroup.SetLayoutHorizontal();
-    }
+        private void RefreshHorizontalLayout()
+        {
+            layoutGroup.SetLayoutHorizontal();
+        }
 
-    #endregion
+        #endregion
     
-    #region Editor Methods
+        #region Event Registry
 
-    private void SubscribeToEditorCallbacks()
-    {
-#if UNITY_EDITOR
-        EditorApplication.hierarchyChanged += UpdateArrayBasedOnButtonIndex;
-#endif
-    }
-
-    private void UnsubscribeFromEditorCallbacks()
-    {
-#if UNITY_EDITOR
-        EditorApplication.hierarchyChanged -= UpdateArrayBasedOnButtonIndex;
-#endif
-    }
-    
-    private void UpdateArrayBasedOnButtonIndex()
-    {
-#if UNITY_EDITOR
-        bottomMenuButtons = bottomMenuButtons.OrderBy(b =>
+        private void SubscribeButtonsCallbacks()
         {
-            if (b == null || b.transform == null) return -1;
-            return b.transform.GetSiblingIndex();
-        }).ToArray();
-#endif
-    }
+            foreach (var menuButton in bottomMenuButtons)
+            {
+                menuButton.Setup();
+                menuButton.ButtonClickedCallback += OnMenuButtonClicked;
+            }
+        }
 
-    #endregion
+        private void UnsubscribeButtonsCallbacks()
+        {
+            foreach (var menuButton in bottomMenuButtons)
+            {
+                menuButton.ButtonClickedCallback -= OnMenuButtonClicked;
+            }
+        }
+
+        #endregion
+        
+        #region Editor Methods
+
+        private void OnValidate()
+        {
+            layoutGroup = GetComponent<HorizontalLayoutGroup>();
+            SubscribeEditorCallbacks();
+        }
+
+        private void SubscribeEditorCallbacks()
+        {
+#if UNITY_EDITOR
+            EditorApplication.hierarchyChanged += UpdateButtonsBasedOnHierarchy;
+#endif
+        }
+
+        private void UnsubscribeEditorCallbacks()
+        {
+#if UNITY_EDITOR
+            EditorApplication.hierarchyChanged -= UpdateButtonsBasedOnHierarchy;
+#endif
+        }
+    
+        private void UpdateButtonsBasedOnHierarchy()
+        {
+#if UNITY_EDITOR
+            bottomMenuButtons = bottomMenuButtons.OrderBy(b =>
+            {
+                if (b == null || b.transform == null) return -1;
+                return b.transform.GetSiblingIndex();
+            }).ToArray();
+#endif
+        }
+
+        #endregion
+    }
 }

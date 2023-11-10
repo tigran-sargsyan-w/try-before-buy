@@ -1,18 +1,20 @@
-﻿using CustomAttributes;
+﻿using Custom_Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DefaultNamespace
+namespace Common
 {
-    public class LinkOpener : MonoBehaviour, IPointerClickHandler 
+    public class HyperlinkFinderAndHandler : MonoBehaviour, IPointerClickHandler 
     {
+        #region Fields
+
         [SerializeField][ReadOnly]
         private TMP_Text textMeshPro;
-        private void OnValidate()
-        {
-            textMeshPro = GetComponent<TMP_Text>();
-        }
+
+        #endregion
+
+        #region Methods
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -28,5 +30,16 @@ namespace DefaultNamespace
                 Application.OpenURL(linkInfo.GetLinkID());
             }
         }
+
+        #endregion
+        
+        #region Editor Methods
+
+        private void OnValidate()
+        {
+            textMeshPro = GetComponent<TMP_Text>();
+        }
+
+        #endregion
     }
 }

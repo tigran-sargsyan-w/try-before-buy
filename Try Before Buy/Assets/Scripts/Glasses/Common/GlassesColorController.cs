@@ -1,17 +1,22 @@
 ﻿using System;
+using Glasses.Data;
 using Screens;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Glasses
+namespace Glasses.Common
 {
     public class GlassesColorController : MonoBehaviour
     {
-        #region Fields
+        #region Events
 
         public event Action<Color> OnFrameColorChanged;
         public event Action<Color> OnLensColorChanged;
+
+        #endregion
         
+        #region Fields
+
         [SerializeField] private TryOnScreen tryOnScreen;
         
         [Header("Frame")]
@@ -33,16 +38,24 @@ namespace Glasses
         public void Activate()
         {
             colorData = tryOnScreen.GetGlassesColorData();
-            
+            InitButtonsColor();
+            SubscribeButtonsCallbacks();
+        }
+
+        public void Deactivate()
+        {
+            UnsubscribeButtonsCallbacks();
+        }
+
+        private void InitButtonsColor()
+        {
             SetButtonColor(frameButton, colorData.frame1Color);
             SetButtonColor(frame2Button, colorData.frame2Color);
             SetButtonColor(frame3Button, colorData.frame3Color);
-            
+
             SetButtonColor(lensButton, colorData.lens1Color);
             SetButtonColor(lens2Button, colorData.lens2Color);
             SetButtonColor(lens3Button, colorData.lens3Color);
-            
-            SubscribeOnButtonsCallbacks();
         }
 
         private void SetButtonColor(Button button, Color color)
@@ -51,27 +64,12 @@ namespace Glasses
             Color newColor = new Color(color.r, color.g, color.b, 1f);
             buttonImage.color = newColor;
         }
-        
-        private void OnFrameButtonClicked(Color color)
-        {
-            OnFrameColorChanged?.Invoke(color);
-        }
-
-        private void OnLensButtonClicked(Color color)
-        {
-            OnLensColorChanged?.Invoke(color);
-        }
-        
-        public void Deactivate()
-        {
-            UnsubscribeFromButtonsCallbacks();
-        }
 
         #endregion
 
         #region Event Registry
-
-        private void SubscribeOnButtonsCallbacks()
+        
+        private void SubscribeButtonsCallbacks()
         {
             frameButton.onClick.AddListener(()=>OnFrameButtonClicked(colorData.frame1Color));
             frame2Button.onClick.AddListener(()=>OnFrameButtonClicked(colorData.frame2Color));
@@ -82,7 +80,7 @@ namespace Glasses
             lens3Button.onClick.AddListener(()=>OnLensButtonClicked(colorData.lens3Color));
         }
 
-        private void UnsubscribeFromButtonsCallbacks()
+        private void UnsubscribeButtonsCallbacks()
         {
             frameButton.onClick.RemoveAllListeners();
             frame2Button.onClick.RemoveAllListeners();
@@ -91,6 +89,16 @@ namespace Glasses
             lensButton.onClick.RemoveAllListeners();
             lens2Button.onClick.RemoveAllListeners();
             lens3Button.onClick.RemoveAllListeners();
+        }
+        
+        private void OnFrameButtonClicked(Color color)
+        {
+            OnFrameColorChanged?.Invoke(color);
+        }
+
+        private void OnLensButtonClicked(Color color)
+        {
+            OnLensColorChanged?.Invoke(color);
         }
 
         #endregion

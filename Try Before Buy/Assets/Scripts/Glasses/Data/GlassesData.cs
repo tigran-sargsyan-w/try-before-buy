@@ -1,7 +1,8 @@
-﻿using CustomAttributes;
+﻿using Custom_Attributes;
+using Enums;
 using UnityEngine;
 
-namespace Glasses
+namespace Glasses.Data
 {
     [CreateAssetMenu(fileName = "GlassesData", menuName = "ProductData/GlassesData", order = 1)]
     public class GlassesData : ScriptableObject

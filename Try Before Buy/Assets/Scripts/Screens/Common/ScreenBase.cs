@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Screens
+namespace Screens.Common
 {
     public class ScreenBase : MonoBehaviour
     {

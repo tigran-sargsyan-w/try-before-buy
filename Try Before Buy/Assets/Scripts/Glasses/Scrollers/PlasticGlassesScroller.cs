@@ -1,4 +1,4 @@
-﻿namespace Glasses
+﻿namespace Glasses.Scrollers
 {
     public class PlasticGlassesScroller : GlassesScroller
     {

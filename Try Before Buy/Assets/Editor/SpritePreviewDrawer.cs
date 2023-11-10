@@ -1,4 +1,4 @@
-﻿using CustomAttributes;
+﻿using Custom_Attributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,22 +15,23 @@ namespace Editor
             EditorGUI.indentLevel = 0;
 
             var spriteRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-            property.objectReferenceValue = EditorGUI.ObjectField(spriteRect, property.name, property.objectReferenceValue, typeof(Sprite), false);
+            property.objectReferenceValue = EditorGUI.ObjectField(spriteRect, property.name, 
+                property.objectReferenceValue, typeof(Sprite), false);
 
-            // Если это не режим Repaint или свойство равно null, выходим
+            // If this is not Repaint mode or the property is null, exit
             if (Event.current.type != EventType.Repaint || property.objectReferenceValue == null)
                 return;
 
-            // Рисуем спрайт
-            Sprite sp = property.objectReferenceValue as Sprite;
+            // Drawing a sprite preview
+            Sprite sprite = property.objectReferenceValue as Sprite;
 
-            // Задаем смещение справа от position.width
-            float previewWidth = 64; // Ширина превью
+            // Set the offset to the right of position.width
+            float previewWidth = 64; 
             spriteRect.x = position.x + position.width - previewWidth;
             spriteRect.y += EditorGUIUtility.singleLineHeight + 4;
             spriteRect.width = previewWidth;
             spriteRect.height = 64;
-            tempStyle.normal.background = sp.texture;
+            if (sprite != null) tempStyle.normal.background = sprite.texture;
             tempStyle.Draw(spriteRect, GUIContent.none, false, false, false, false);
 
             EditorGUI.indentLevel = ident;

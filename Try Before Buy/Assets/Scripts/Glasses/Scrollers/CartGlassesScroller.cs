@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using Enums;
+using Glasses.Common;
+using Glasses.Data;
 using Screens;
 using UnityEngine;
 
-namespace Glasses
+namespace Glasses.Scrollers
 {
     public class CartGlassesScroller : MonoBehaviour
     {

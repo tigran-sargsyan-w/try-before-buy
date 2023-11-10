@@ -1,4 +1,4 @@
-﻿namespace Glasses
+﻿namespace Enums
 {
     public enum GlassesType
     {

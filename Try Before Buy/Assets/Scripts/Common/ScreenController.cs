@@ -1,81 +1,85 @@
 using System.Linq;
 using Screens;
+using Screens.Common;
 using UnityEditor;
 using UnityEngine;
 
-public class ScreenController : MonoBehaviour
+namespace Common
 {
-    #region Fields
+    public class ScreenController : MonoBehaviour
+    {
+        #region Fields
 
-    [SerializeField] private ScreenBase[] screens;
+        [SerializeField] private ScreenBase[] screens;
 
-    #endregion
+        #endregion
     
-    #region Unity Lifecycle
-
-    private void OnValidate()
-    {
-        SubscribeToEditorCallbacks();
-    }
-
-    private void Awake()
-    {
-        HideAllScreens();
-    }
-
-    private void OnDestroy()
-    {
-        UnsubscribeFromEditorCallbacks();
-    }
-
-    #endregion
-
-    #region Methods
-
-    public void ShowScreen(int index)
-    {
-        for (int i = 0; i < screens.Length; i++)
+        #region Unity Lifecycle
+        
+        private void Awake()
         {
-            screens[i].gameObject.SetActive(i == index);
+            HideAllScreens();
         }
-    }
 
-    private void HideAllScreens()
-    {
-        foreach (var screen in screens)
+        private void OnDestroy()
         {
-            screen.gameObject.SetActive(false);
+            UnsubscribeEditorCallbacks();
         }
-    }
 
-    #endregion
+        #endregion
 
-    #region Editor Methods
+        #region Methods
 
-    private void SubscribeToEditorCallbacks()
-    {
-#if UNITY_EDITOR
-        EditorApplication.hierarchyChanged += UpdateArrayBasedOnButtonIndex;
-#endif
-    }
-
-    private void UnsubscribeFromEditorCallbacks()
-    {
-#if UNITY_EDITOR
-        EditorApplication.hierarchyChanged -= UpdateArrayBasedOnButtonIndex;
-#endif
-    }
-
-    private void UpdateArrayBasedOnButtonIndex()
-    {
-#if UNITY_EDITOR
-        screens = screens.OrderBy(s =>
+        public void ShowScreen(int index)
         {
-            if (s == null || s.transform == null) return -1;
-            return s.transform.GetSiblingIndex();
-        }).ToArray();
-#endif
-    }
+            for (int i = 0; i < screens.Length; i++)
+            {
+                screens[i].gameObject.SetActive(i == index);
+            }
+        }
 
-    #endregion
+        private void HideAllScreens()
+        {
+            foreach (var screen in screens)
+            {
+                screen.gameObject.SetActive(false);
+            }
+        }
+
+        #endregion
+
+        #region Editor Methods
+
+        private void OnValidate()
+        {
+            SubscribeEditorCallbacks();
+        }
+        
+        private void SubscribeEditorCallbacks()
+        {
+#if UNITY_EDITOR
+            EditorApplication.hierarchyChanged += UpdateArrayBasedOnHierarchy;
+#endif
+        }
+
+        private void UnsubscribeEditorCallbacks()
+        {
+#if UNITY_EDITOR
+            EditorApplication.hierarchyChanged -= UpdateArrayBasedOnHierarchy;
+#endif
+        }
+
+        private void UpdateArrayBasedOnHierarchy()
+        {
+#if UNITY_EDITOR
+            screens = screens.OrderBy(s =>
+            {
+                if (s == null || s.transform == null) return -1;
+                return s.transform.GetSiblingIndex();
+            }).ToArray();
+#endif
+        }
+
+        #endregion
+    }
 }

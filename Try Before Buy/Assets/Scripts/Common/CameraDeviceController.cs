@@ -1,47 +1,60 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace
+namespace Common
 {
-    public class CameraManager : MonoBehaviour
+    public class CameraDeviceController : MonoBehaviour
     {
-        public RawImage rawImage;
-        public AspectRatioFitter fit;
+        #region Fields
+
+        [SerializeField] private RawImage rawImage;
+        [SerializeField] private AspectRatioFitter fit;
     
         private WebCamTexture webcamTexture;
         private WebCamDevice[] webCamDevices;
         string frontCamName = null;
         string backCamName = null;
-    
+
+        #endregion
+
+        #region Unity Lifecycle
+
         private void Start()
+        {
+            CheckAndInitCamera();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void CheckAndInitCamera()
         {
             if (WebCamTexture.devices.Length > 0)
             {
-                
                 webCamDevices = WebCamTexture.devices;
-                foreach(var camDevice in webCamDevices){ 
+                foreach (var camDevice in webCamDevices)
+                {
                     Debug.Log(camDevice.name);
                     if (!camDevice.isFrontFacing)
                     {
                         backCamName = camDevice.name;
                     }
-                    else if(camDevice.isFrontFacing){
+                    else if (camDevice.isFrontFacing)
+                    {
                         frontCamName = camDevice.name;
                     }
                 }
+
                 webcamTexture = new WebCamTexture(frontCamName, rawImage.mainTexture.width, rawImage.mainTexture.height);
-
                 rawImage.texture = webcamTexture;
-
-                // Запускаем камеру.
                 webcamTexture.Play();
-                
-                float ratio = (float)webcamTexture.width / (float)webcamTexture.height;
+                float ratio = (float) webcamTexture.width / (float) webcamTexture.height;
                 fit.aspectRatio = ratio;
             }
             else
             {
-                Debug.Log("Камера не найдена на устройстве.");
+                Debug.Log("Camera on device not found.");
             }
         }
 
@@ -61,6 +74,6 @@ namespace DefaultNamespace
             webcamTexture.Play();
         }
 
-        
+        #endregion
     }
 }

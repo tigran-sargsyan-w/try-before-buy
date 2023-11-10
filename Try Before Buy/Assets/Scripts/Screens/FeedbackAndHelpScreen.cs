@@ -1,4 +1,5 @@
 ﻿using System;
+using Screens.Common;
 using Screens.ScreenData;
 using TMPro;
 using UnityEngine;
@@ -39,25 +40,7 @@ namespace Screens
         #endregion
 
         #region Methods
-
-        private void SubscribeOnButtonsCallbacks()
-        {
-            sendFeedbackButton.onClick.AddListener(OnSendFeedbackButtonClicked);
-            clearFeedbackButton.onClick.AddListener(OnClearFeedbackButtonClicked);
-            
-            sendHelpButton.onClick.AddListener(OnSendHelpButtonClicked);
-            clearHelpButton.onClick.AddListener(OnClearHelpButtonClicked);
-        }
-
-        private void UnsubscribeFromButtonsCallbacks()
-        {
-            sendFeedbackButton.onClick.RemoveAllListeners();
-            clearFeedbackButton.onClick.RemoveAllListeners();
-            
-            sendHelpButton.onClick.RemoveAllListeners();
-            clearHelpButton.onClick.RemoveAllListeners();
-        }
-
+        
         private void SendEmail(string recipientEmail, string emailSubject, string emailBody)
         {
             string emailUri = $"mailto:{recipientEmail}?" +
@@ -89,6 +72,28 @@ namespace Screens
         private void OnClearHelpButtonClicked()
         {                                        
             helpInputField.text = "";
+        }
+
+        #endregion
+        
+        #region Event Registry
+
+        private void SubscribeOnButtonsCallbacks()
+        {
+            sendFeedbackButton.onClick.AddListener(OnSendFeedbackButtonClicked);
+            clearFeedbackButton.onClick.AddListener(OnClearFeedbackButtonClicked);
+            
+            sendHelpButton.onClick.AddListener(OnSendHelpButtonClicked);
+            clearHelpButton.onClick.AddListener(OnClearHelpButtonClicked);
+        }
+
+        private void UnsubscribeFromButtonsCallbacks()
+        {
+            sendFeedbackButton.onClick.RemoveAllListeners();
+            clearFeedbackButton.onClick.RemoveAllListeners();
+            
+            sendHelpButton.onClick.RemoveAllListeners();
+            clearHelpButton.onClick.RemoveAllListeners();
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using CustomAttributes;
+﻿using Custom_Attributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            GUI.enabled = false; // Делаем поле только для чтения
+            GUI.enabled = false; // Making the field read-only
             EditorGUI.PropertyField(position, property, label);
             GUI.enabled = true;
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Glasses;
+using Glasses.Common;
+using Glasses.Scrollers;
+using Screens.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,17 +64,7 @@ namespace Screens
             buyButton.gameObject.SetActive(!isCartEmpty);
             if (!isCartEmpty) CalculateAndSetTotalPrice();
         }
-
-        private void SubscribeToEvents()
-        {
-            buyButton.onClick.AddListener(OnBuyButtonClicked);
-        }
-
-        private void UnsubscribeFromEvents()
-        {
-            buyButton.onClick.RemoveAllListeners();
-        }
-
+        
         private void OnBuyButtonClicked()
         {
             Application.OpenURL(amazonCartUrl);
@@ -98,6 +90,20 @@ namespace Screens
 
                 totalPriceText.text = $"{totalPrice}€";
             }
+        }
+
+        #endregion
+        
+        #region Event Registry
+
+        private void SubscribeToEvents()
+        {
+            buyButton.onClick.AddListener(OnBuyButtonClicked);
+        }
+
+        private void UnsubscribeFromEvents()
+        {
+            buyButton.onClick.RemoveAllListeners();
         }
 
         #endregion

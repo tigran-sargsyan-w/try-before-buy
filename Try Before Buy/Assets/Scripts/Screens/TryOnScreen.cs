@@ -1,5 +1,9 @@
 ﻿using System.Linq;
-using Glasses;
+using Common;
+using Enums;
+using Glasses.Common;
+using Glasses.Data;
+using Screens.Common;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
@@ -33,32 +37,25 @@ namespace Screens
         private void OnEnable()
         {
             if (CheckIfHintNeeded()) return;
-            glassesColorController.OnFrameColorChanged += OnFrameColorClicked;
-            glassesColorController.OnLensColorChanged += OnLensColorClicked;
-            
-            arFaceManager.facesChanged += OnFacesChanged;
+            SubscribeOnEvents();
             OnSessionStart();
         }
 
         private void OnDisable()
         {
-            glassesColorController.OnFrameColorChanged -= OnFrameColorClicked;
-            glassesColorController.OnLensColorChanged -= OnLensColorClicked;
-            
-            arFaceManager.facesChanged -= OnFacesChanged;
+            UnsubscribeFromEvents();
             OnSessionEnd();
         }
         
-
         #endregion
 
         #region Methods
 
-        public void GoToTryOnScreen(GlassesData glassesData)
+        public void GoToTryOnScreen(GlassesData data)
         {
-            this.glassesData = glassesData;
-            glassesType = glassesData.glassesType;
-            menuController.OnButtonClicked(2);
+            glassesData = data;
+            glassesType = data.glassesType;
+            menuController.OnMenuButtonClicked(2);
             OnSessionStart();
         }
 
@@ -78,14 +75,14 @@ namespace Screens
         private void OnLensColorClicked(Color color)
         {
             if (cachedGlasses == null) return;
-            var glasses = cachedGlasses.GetComponent<Glasses.Glasses>();
+            var glasses = cachedGlasses.GetComponent<Glasses.Common.Glasses>();
             glasses.SetLensColor(color);
         }
 
         private void OnFrameColorClicked(Color color)
         {
             if (cachedGlasses == null) return;
-            var glasses = cachedGlasses.GetComponent<Glasses.Glasses>();
+            var glasses = cachedGlasses.GetComponent<Glasses.Common.Glasses>();
             glasses.SetFrameColor(color);
         }
         
@@ -127,6 +124,26 @@ namespace Screens
             cachedFace = arFace.gameObject;// parent of face mesh
             var glasses = glassesData.glassesPrefab;
             cachedGlasses = Instantiate(glasses,cachedFace.transform);
+        }
+
+        #endregion
+        
+        #region Event Registry
+
+        private void SubscribeOnEvents()
+        {
+            glassesColorController.OnFrameColorChanged += OnFrameColorClicked;
+            glassesColorController.OnLensColorChanged += OnLensColorClicked;
+
+            arFaceManager.facesChanged += OnFacesChanged;
+        }
+
+        private void UnsubscribeFromEvents()
+        {
+            glassesColorController.OnFrameColorChanged -= OnFrameColorClicked;
+            glassesColorController.OnLensColorChanged -= OnLensColorClicked;
+
+            arFaceManager.facesChanged -= OnFacesChanged;
         }
 
         #endregion

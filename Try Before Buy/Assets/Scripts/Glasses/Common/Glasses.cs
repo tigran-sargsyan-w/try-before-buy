@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Glasses
+namespace Glasses.Common
 {
     public class Glasses : MonoBehaviour
     {
@@ -17,14 +17,6 @@ namespace Glasses
         #endregion
 
         #region Unity Lifecycle
-
-        private void OnValidate()
-        {
-            frame = gameObject;
-            lens = frame.transform.GetChild(0).gameObject;
-            defaultFrameMaterial = frame.GetComponent<MeshRenderer>().sharedMaterial;
-            defaultLensMaterial = lens.GetComponent<MeshRenderer>().sharedMaterial;
-        }
 
         private void Start()
         {
@@ -44,13 +36,11 @@ namespace Glasses
         public void SetFrameColor(Color color)
         {
             frameMaterialCopy.color = color;
-            Debug.Log("Set Frame Color Done with color: " + color);
         }
         
         public void SetLensColor(Color color)
         {
             lensMaterialCopy.color = color;
-            Debug.Log("Set Lens Color Done with color: " + color);
         }
 
         private void CopyMaterial()
@@ -60,7 +50,18 @@ namespace Glasses
             
             frame.GetComponent<MeshRenderer>().material = frameMaterialCopy;
             lens.GetComponent<MeshRenderer>().material = lensMaterialCopy;
-            Debug.Log("CopyMaterial Done");
+        }
+
+        #endregion
+        
+        #region Editor Methods
+
+        private void OnValidate()
+        {
+            frame = gameObject;
+            lens = frame.transform.GetChild(0).gameObject;
+            defaultFrameMaterial = frame.GetComponent<MeshRenderer>().sharedMaterial;
+            defaultLensMaterial = lens.GetComponent<MeshRenderer>().sharedMaterial;
         }
 
         #endregion
