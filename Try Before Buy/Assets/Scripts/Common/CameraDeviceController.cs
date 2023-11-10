@@ -12,8 +12,8 @@ namespace Common
     
         private WebCamTexture webcamTexture;
         private WebCamDevice[] webCamDevices;
-        string frontCamName = null;
-        string backCamName = null;
+        string frontCamName;
+        string backCamName;
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace Common
                 webcamTexture = new WebCamTexture(frontCamName, rawImage.mainTexture.width, rawImage.mainTexture.height);
                 rawImage.texture = webcamTexture;
                 webcamTexture.Play();
-                float ratio = (float) webcamTexture.width / (float) webcamTexture.height;
+                float ratio = (float) webcamTexture.width / webcamTexture.height;
                 fit.aspectRatio = ratio;
             }
             else
