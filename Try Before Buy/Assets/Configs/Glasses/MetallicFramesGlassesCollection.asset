@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f8a02dd7304e659316ad6b1d086da9, type: 3}
+  m_Name: MetallicFramesGlassesCollection
+  m_EditorClassIdentifier: 
+  glassesData:
+  - {fileID: 11400000, guid: 5e622676be5fb2543af05c245047d9a3, type: 2}
+  - {fileID: 11400000, guid: 6f684726d51b2214ca40e801379a8dbc, type: 2}
+  - {fileID: 11400000, guid: ddc4a401d6deecd45b43bd09f524b1e7, type: 2}
+  - {fileID: 11400000, guid: 3747e0453391bba49b0b4e1b41cd25c6, type: 2}
+  - {fileID: 11400000, guid: 44f806bd23a18794ea92d4f4820141e4, type: 2}
+  - {fileID: 11400000, guid: 9f9c6d5c51f4dc64491685bcf97b07e6, type: 2}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f8a02dd7304e659316ad6b1d086da9, type: 3}
+  m_Name: PlasticFramesGlassesCollection
+  m_EditorClassIdentifier: 
+  glassesData:
+  - {fileID: 11400000, guid: e1538ff607925684d8103f75354efb78, type: 2}
+  - {fileID: 11400000, guid: 44d90f475ba09a249a25096953d6b20e, type: 2}
+  - {fileID: 11400000, guid: 1751e7e58e50faa4fb3684946547cd5c, type: 2}
+  - {fileID: 11400000, guid: 242128590f1e77747af0577e63c3aaf5, type: 2}
+  - {fileID: 11400000, guid: 86d7ea791c6ae0143af390f16b0da238, type: 2}
+  - {fileID: 11400000, guid: 7c6b3eefe19c68f419df9245a2ae47b3, type: 2}
+  - {fileID: 11400000, guid: 5b730e955cc2aeb4a841d8cc5ea79acf, type: 2}
+  - {fileID: 11400000, guid: ef05f7cbe6455ba4a9a98f2eee42e9fd, type: 2}
+  - {fileID: 11400000, guid: c00b45b84bc638a40813a0a80e769cb2, type: 2}
+  - {fileID: 11400000, guid: c7d64c217ecd6094e8b14f1eedecbb4e, type: 2}
+  - {fileID: 11400000, guid: 19746f8e374d5cc46a66543f83d66639, type: 2}
