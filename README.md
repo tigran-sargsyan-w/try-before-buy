@@ -11,7 +11,7 @@ This app allows users to try on different glasses using augmented reality (AR). 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repo-name.git
+   git clone https://github.com/tigran-sargsyan-w/repo-name.git
    ```
 2. Open the project in Unity as it is an AR project built on Unity.
 
