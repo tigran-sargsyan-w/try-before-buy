@@ -30,7 +30,7 @@ This app allows users to try on different glasses using augmented reality (AR). 
 
 Here's a preview of how the app works:
 
-![Try Before Buy Demo](https://github.com/username/repo-name/blob/main/path-to-gif.gif)
+![Try Before Buy Demo](https://github.com/tigran-sargsyan-w/try-before-buy/blob/main/Try%20Before%20Buy/Resources/try-before-buy.gif)
 
 
 *Transform your shopping experience with our AR Glasses Try-On App!*
