@@ -13,6 +13,7 @@ namespace Common
 
         [SerializeField] private BottomMenuButton[] bottomMenuButtons;
         [SerializeField] private ScreenController screenController;
+        [SerializeField] private Button backToMainButton;
 
         [SerializeField][ReadOnly] 
         private HorizontalLayoutGroup layoutGroup;
@@ -54,6 +55,10 @@ namespace Common
         {
             layoutGroup.SetLayoutHorizontal();
         }
+        private void OnBackToMainButtonClicked()
+        {
+            SceneController.Instance.LoadScene(SceneController.Instance.Scenes[0]);
+        }
 
         #endregion
     
@@ -61,6 +66,7 @@ namespace Common
 
         private void SubscribeButtonsCallbacks()
         {
+            backToMainButton.onClick.AddListener(OnBackToMainButtonClicked);
             foreach (var menuButton in bottomMenuButtons)
             {
                 menuButton.Setup();
@@ -70,6 +76,7 @@ namespace Common
 
         private void UnsubscribeButtonsCallbacks()
         {
+            backToMainButton.onClick.RemoveAllListeners();
             foreach (var menuButton in bottomMenuButtons)
             {
                 menuButton.ButtonClickedCallback -= OnMenuButtonClicked;

@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/TryOnGlasses.unity
+    guid: 153ae91994a64c2418a7318204c88726
+  - enabled: 1
+    path: Assets/Scenes/TryOnWatches.unity
+    guid: 7a1b2b8443508ec40b02ff7ef12ef0b1
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 3e712991b7e09d248a7ebb3249699712, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: f4e15be2bde686948814fe7a2f8ff782, type: 2}
